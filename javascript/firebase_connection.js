@@ -18,12 +18,11 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 		// temporary html template
 		// again, edit as necessary
 		bookListings.append(
-			"<div class='post'>" +
-				"<p>"+book+"</p>"+
-				"<p>"+category+"</p>"+
-				"<p>"+subject+"</p>"+
-				"<p>"+user+"</p>"+
-			"</div>"
+			"<li class='post'>" +
+				book+"-------"+
+				subject+"-------"+
+				user+
+			"</li>"
 		);
 	});
 }, function(error){
