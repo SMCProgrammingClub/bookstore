@@ -133,34 +133,65 @@ Single styles
 ------------------------*/
 
 
-.dropbtns {
-  	color: #fff !important;
-  background-color: royalblue;
-  border-color: #222;
-  	padding: .5em 1em;
-  font-weight: 400;
-  line-height: 1.2;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: .2em;
-  position: absolute;
-  text-decoration: none;
-  top: 0em;
-  margin: 2em;
-}
 .dropbtn1 {
-	left: -20em;
+    color: #fff !important;
+	background-color: royalblue;
+	border-color: #222;
+    padding: .5em 1em;
+	font-weight: 400;
+	line-height: 1.2;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: .2em;
+	position: absolute;
+	text-decoration: none;
+	top: 0em;
+	left: -19.5em;
+	margin: 2em;
 }
 
 .dropbtn2 {
-	left: -14em;
+    color: #fff !important;
+	background-color: royalblue;
+	border-color: #222;
+    padding: .5em 1em;
+	font-weight: 400;
+	line-height: 1.2;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: .2em;
+	position: absolute;
+	text-decoration: none;
+	top: 0em;
+	left: -13.5em;
+	margin: 2em;
 }
 
 .dropbtn3 {
-	left: -7.5em;
+    color: #fff !important;
+	background-color: royalblue;
+	border-color: #222;
+    padding: .5em 1em;
+	float: center;
+	font-weight: 400;
+	line-height: 1.2;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: .2em;
+	position: absolute;
+	text-decoration: none;
+	top: 0em;
+	left: -8.0em;
+	margin: 2em;
 }
 
 .dropdown {
@@ -246,14 +277,14 @@ Wide styles
 	}
 
 	.footer { padding: 1em 2em; }
-
+	
 	.nav li
 	{
 		display: inline;
 		margin: 0 1em 0 0;
-
+		
 	}
-
+	
 	.nav a
 	{
 		display: inline;
@@ -262,3 +293,4 @@ Wide styles
 		margin-right: 35px;
 	}
 }
+
