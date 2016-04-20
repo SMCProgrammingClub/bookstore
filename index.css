@@ -3,6 +3,8 @@
 Base styles
 ------------------------*/
 
+
+
 body
 {
 	margin: 0;
@@ -23,6 +25,7 @@ p
 {
 	margin: 0 0 1.5em;
 	line-height: 1.5;
+	
 }
 
 hr
@@ -66,18 +69,20 @@ Layout styles
 
 .content
 {
-	overflow: hidden;
+	overflow: auto;
 	padding: 1em 1.25em;
 	background-color: #fff;
 }
 
 .main, .aside
 {
+	
 	margin-bottom: 1em;
 }
 
 .footer
 {
+	
 	color: #fff;
 	background: #000;
 	padding: 1em 1.25em;
@@ -134,10 +139,10 @@ Single styles
 
 
 .dropbtns {
-  	color: #fff !important;
+  color: #fff !important;
   background-color: royalblue;
   border-color: #222;
-  	padding: .5em 1em;
+  padding: .5em 1.5em;
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
@@ -156,25 +161,48 @@ Single styles
 }
 
 .dropbtn2 {
-	left: -14em;
+	left: -13em;
 }
 
 .dropbtn3 {
-	left: -7.5em;
+	left: -5.5em;
 }
 
 .dropdown {
-    position: relative;
+	position: relative;
     display: inline-block;
 }
 
 .dropdown-content {
+	
     display: none;
     position: absolute;
     background-color: #f9f9f9;
+	width: 90px;
 	text-align: center;
-    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content1 {
+	position: absolute;
+	min-width: 90px;
+	bottom: -6.45em;
+	left: -15em;
+}
+
+.dropdown-content2 {
+	position: absolute;
+	min-width: 90px;
+	bottom: -6.45em;
+	left: -9em;
+}
+
+.dropdown-content3 {
+	position: absolute;
+	min-width: 90px;
+	bottom: -6.45em;
+	left: -2.75em;
+	
 }
 
 .dropdown-content a {
@@ -182,12 +210,15 @@ Single styles
     padding: 2px 6px;
     text-decoration: none;
     display: block;
+	
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 .dropdown:hover .dropdown-content {
     display: block;
+	min-width: 90px;
+	
 }
 
 
@@ -228,7 +259,7 @@ Wide styles
 {
 	.header { padding: 1.5em 3em; }
 	.nav-bar { padding: 1em 3em; }
-	.content { padding: 2em 3em; }
+	.content { padding: 2em 3em; padding-bottom: 11em; }
 
 	.main
 	{
