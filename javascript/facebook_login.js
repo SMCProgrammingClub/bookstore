@@ -13,10 +13,12 @@ $("#login").click(function(){
 
 //nav options for logged in
 ref.onAuth(function(authData) {
-  $("#login").hide();
-  $("#username").show();
-  $("#logout").show();  
-  $("#username").html(authData.facebook.displayName);
+  if(authData) {
+    $("#login").hide();
+    $("#username").show();
+    $("#logout").show();  
+    $("#username").html(authData.facebook.displayName);
+  }
 }); 
 
 //logout
