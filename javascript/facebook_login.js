@@ -1,4 +1,5 @@
 var ref = new Firebase("https://blinding-torch-3304.firebaseio.com");
+ $("#logout").hide();
 
 //login
 $("#login").click(function(){
