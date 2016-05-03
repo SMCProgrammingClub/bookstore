@@ -9,7 +9,7 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 		var postSnap = postSnapshot.val();
 		
 		// test values, test html
-		// edit here to add more cetegories like price, date, condition, etc.
+		// edit here to add more categories like price, date, condition, etc.
 		var book = postSnap.book;
 		var subject = postSnap.subject;
 		var category = postSnap.category;
@@ -23,6 +23,7 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 				"<p class='post_subject'>"+subject+"</p>"+
 				"<p class='post_user'>"+user+"</p>"+
 			"</div>"
+      //change to author, title, price
 		);
 	});
 }, function(error){
