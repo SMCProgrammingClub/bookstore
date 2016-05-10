@@ -10,7 +10,7 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 		
 		// test values, test html
 		// edit here to add more categories like price, date, condition, etc.
-		var book = postSnap.book;
+		var title = postSnap.Title;
 		var subject = postSnap.subject;
 		var category = postSnap.category;
 		var user = postSnap.user;
@@ -19,7 +19,7 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 		// again, edit as necessary
 		bookListings.append(
 			"<div class='post'>" +
-				"<p class='post_book'>"+book+"</p>"+
+				"<p class='post_book'>"+title+"</p>"+
 				"<p class='post_subject'>"+subject+"</p>"+
 				"<p class='post_user'>"+user+"</p>"+
 			"</div>"
