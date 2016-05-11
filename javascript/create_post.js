@@ -8,6 +8,7 @@ var isbn1 = document.getElementById("isbn");
 var subject1 = document.getElementById("subject");
 var subject_class = document.getElementById("subject_class");
 var condition_type = document.getElementById("condition_type");
+var price1 = document.getElementById("price");
 var condition_comment = document.getElementById("condition_comment");
 
 $("#create-post-button").click(function() {
@@ -17,10 +18,11 @@ $("#create-post-button").click(function() {
   var isbn = isbn1.value;
   var subject = subject1.value;
   var course = subject_class.value;
-  var condition = condition_type.value;  
+  var condition = condition_type.value;
+  var price = price1.value;
   var comments = condition_comment.value;
   
-  newPost = { 'Title': title, 'Author': author, 'ISBN': isbn, 'Subject': subject, 'Course': course, 'Condition': condition, 'Comments': comments };
+  newPost = { 'Title': title, 'Author': author, 'ISBN': isbn, 'Subject': subject, 'Course': course, 'Condition': condition, 'Price': price, 'Comments': comments };
   console.log("Adding new post: ", newPost);
   var newBookstorePost =  bookstorePosts.push(newPost);
 }); 

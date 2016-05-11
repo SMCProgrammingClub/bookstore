@@ -26,22 +26,22 @@
 					
 					<div class="form-group">
 						<label> Book Title: </label>
-						<input id="book_title" type="text" class="notification-required" name="book_title" placeholder="Book Title">
+						<input id="book_title" type="text" class="notification-required" name="book_title" autofocus required>
 					</div>
 					
 					<div class="form-group">
 						<label> Author's Name: </label>
-						<input id="author" type="text" class="notification-required" name="author" placeholder="Author's Name">
+						<input id="author" type="text" class="notification-required" name="author" required>
 					</div>
 			
 					<div class="form-group">
 						<label for="isbn"> ISBN: </label>
-						<input id="isbn" type="text" class="notification-required" name="isbn" placeholder="ISBN">
+						<input id="isbn" type="text" class="notification-required" name="isbn">
 					</div>
 			
 					<div class="form-group">
 						<label> Subject: </label>
-							<select id="subject" name="subject" class="notification-required">
+							<select id="subject" name="subject" class="notification-required" required>
 								<option label="Subject"> </option>
 								<option label="Accounting">Accounting</option>
 								<option label="American Sign Language - Credit">American Sign Language - Credit</option>
@@ -156,31 +156,32 @@
 						
 					<div class="form-group">
 						<label> Class: </label>
-							<select id="subject_class" name="subject_class" class="notification-required">
-								<option value="" label="Class"> </option>
-								<option value="class1">class1</option>
-								<option value="class2">class2</option>
-								<option value="class3">class3</option>
-							</select>
+							<input id="subject_class" name="subject_class" class="notification-required" required>
+							</input>
 					</div>
 			
 					<div class="form-group">
 						<label for="condition_type">Condition Type:</label>
-							<select id="condition_type" name="condition_type" class="notification-required">
+							<select id="condition_type" name="condition_type" class="notification-required" required>
 								<option value="" label="Condition Type"></option>
-								<option value="new, new"> New</option>
-								<option value="used, like_new"> Used - Like New</option>
-								<option value="used, very_good"> Used - Very Good</option>
-								<option value="used, good"> Used - Good</option>
-								<option value="used, acceptable"> Used - Acceptable</option>
-								<option value="used, not_sellable"> Not even worth selling</option>
+								<option value="new"> New </option>
+								<option value="like_new"> Like New </option>
+								<option value="very_good"> Very Good </option>
+								<option value="good"> Good </option>
+								<option value="acceptable"> Acceptable </option>
+								<option value="poor"> Poor </option>
 							</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="price">Price:</label>
+						<input id="price" type="text" class="notification-required" name="price" required>
 					</div>
 			
 					<div class="form-group">
 						<label for="condition_comment">Comments:</label>
 							<div>
-							<textarea id="condition_comment" name="condition_comment" rows="8" cols="40" placeholder="Comments you would like to add"></textarea>
+							<textarea id="condition_comment" name="condition_comment" rows="4" cols="40"></textarea>
 							</div>
 					</div>
 			
