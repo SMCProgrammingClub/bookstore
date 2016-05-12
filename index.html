@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Link for custom css -->
-  <link rel="stylesheet" type="text/css" href="index.css">
+  <!--<link rel="stylesheet" type="text/css" href="index.css">-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
 
 	<!-- Links for javascript APIs we are using -->
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
@@ -23,18 +24,70 @@
 
 <body>
 
-<div id="wrapper">
+<nav class="navbar navbar-dark bg-inverse">
+ <div class="col-md-2"></div>
 
+ <div class="col-md-8">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Booklr</a>
+
+		<!-- Links -->
+		<ul class="nav navbar-nav pull-xs-right">
+			<li class="nav-item">
+				<a class="nav-link" href="#">Login</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="row">
+
+				<!-- Left Panel -->
+				<div class="col-md-4">
+					<div class="card">
+					  <div class="card-block">
+					    <h4 class="card-title">Search Books</h4>
+
+							<!-- Search bar -->
+							<div class="input-group">
+					      <div class="input-group-btn">
+					        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Title</button>
+					        <ul class="dropdown-menu dropdown-menu-select">
+					          <li class="dropdown-item" href="#">Title</li>
+					          <li class="dropdown-item" href="#">Author</li>
+					          <li class="dropdown-item" href="#">ISBN</li>
+					        </ul>
+					      </div>
+							  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+							</div>
+							<!-- /Search bar -->
+
+					    <a href="#" class="btn btn-primary">Search</a>
+					  </div>
+					</div>
+				</div>
+
+				<!-- Right Panel -->
+				<div class="col-md-8">
+					<h2>Post Listings</h2>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--
   <div class="header">
-    <div class="container">
-      <h1 class="header-heading">Booklr</h1>
-    </div>
+    <h1 class="header-heading">Booklr</h1>
   </div>
 
   <div class="nav-bar">
     <div class="container">
       <ul class="nav">
-        <!--<li><a href="#" id="signup">Sign Up</a></li>-->
         <li><a href="#" id="login">Login</a></li>
         <li><a href="#" id="logout">Logout</a></li>
         <li><a href="#" id="username"></a></li>
@@ -80,7 +133,6 @@
 
       <div class="aside">
         <h3>Postings</h3>
-        <!-- Lists -->
         <div id="bookListings">
         </div>
       </div>
@@ -96,9 +148,10 @@
       &copy; Copyright Booklr 2016
     </div>
   </div>
-
+-->
   <script src="javascript/firebase_connection.js"></script>
   <script src="javascript/facebook_login.js"></script>
+	<script src="javascript/dropdown-select.js"></script>
 
 </body>
 </html>
