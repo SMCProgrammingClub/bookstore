@@ -2,3 +2,16 @@
 .navbar {
   margin-bottom: 16px;
 }
+
+.post {
+
+}
+.post > .post-title {
+  font-weight: bold;
+}
+.post > .post-author {
+
+}
+.post > .post-price {
+ float: right;
+}
