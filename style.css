@@ -15,3 +15,27 @@
 .post > .post-price {
  float: right;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+.footer .container {
+  height: 100%;
+}
+.footer .footer-text {
+  display: inline-block;
+  margin-top: 25px;
+}

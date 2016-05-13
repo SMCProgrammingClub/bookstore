@@ -20,6 +20,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 
+	<!-- Font-Awesome library (for cool icons) -->
+	<script src="https://use.fontawesome.com/79ba6194f1.js"></script>
+
 </head>
 
 <body>
@@ -79,15 +82,13 @@
 					    <h4 class="card-title">Post Listings</h4>
 					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 					  </div>
-						<div class="list-group list-group-flush" id="bookListings">
-						  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-						  <a href="#" class="list-group-item">Morbi leo risus</a>
-						  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-						  <a href="#" class="list-group-item">Vestibulum at eros</a>
-						</div>
+
+						<!-- Post listings get put inside this div -->
+						<div class="list-group list-group-flush" id="bookListings"></div>
+
 					  <div class="card-block">
-					    <a href="#" class="card-link">Card link</a>
-					    <a href="#" class="card-link">Another link</a>
+					    <a href="#" class="card-link"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a>
+					    <a href="#" class="card-link pull-xs-right">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 					  </div>
 					</div>
 
@@ -97,6 +98,12 @@
 		</div>
 	</div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted footer-text"><b>SMC Programming Club</b> &mdash; All rights reserved</span>
+  </div>
+</footer>
 <!--
   <div class="header">
     <h1 class="header-heading">Booklr</h1>
