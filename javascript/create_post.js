@@ -12,7 +12,7 @@ var price1 = document.getElementById("price");
 var condition_comment = document.getElementById("condition_comment");
 
 $("#create-post-button").click(function() {
-  
+
   var title = book_title.value;
   var author = author1.value;
   var isbn = isbn1.value;
@@ -21,9 +21,8 @@ $("#create-post-button").click(function() {
   var condition = condition_type.value;
   var price = price1.value;
   var comments = condition_comment.value;
-  
+
   newPost = { 'Title': title, 'Author': author, 'ISBN': isbn, 'Subject': subject, 'Course': course, 'Condition': condition, 'Price': price, 'Comments': comments };
   console.log("Adding new post: ", newPost);
   var newBookstorePost =  bookstorePosts.push(newPost);
 }); 
-   
