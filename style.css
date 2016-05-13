@@ -10,8 +10,26 @@
   background-color: #2f3c3d;
 }
 
+/* --{ utility classes }-- */
+@media screen and (min-width: 62em) {
+  .full-height {
+    height: 100%;
+    position: relative;
+  }
+  .sticky-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+.full-height-sm {
+  height: 100%;
+  position: relative;
+}
+
 .navbar {
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 }
 
 .post {
@@ -27,13 +45,17 @@
  float: right;
 }
 
+.main-content {
+  padding-top: 16px;
+  height: calc(100% - 60px);
+}
+
 html {
   position: relative;
-  min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /* Padding bottom by footer height */
+  padding-bottom: 60px;
 }
 .footer {
   position: absolute;

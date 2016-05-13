@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="full-height-sm">
 <head>
   <title>Booklr</title>
 
@@ -25,12 +25,12 @@
 
 </head>
 
-<body>
+<body class="full-height-sm">
 
 <nav class="navbar navbar-dark bg-inverse color-1-inverse">
- <div class="col-md-2"></div>
+ <div class="col-lg-2"></div>
 
- <div class="col-md-8">
+ <div class="col-lg-8">
 		<!-- Brand -->
 		<a class="navbar-brand" href="#">Booklr</a>
 
@@ -55,14 +55,14 @@
 	</div>
 </nav>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
-			<div class="row">
+<div class="container-fluid main-content">
+	<div class="row full-height-sm">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8 full-height-sm">
+			<div class="row full-height-sm">
 
 				<!-- Left Panel -->
-				<div class="col-md-4">
+				<div class="col-lg-4 full-height">
 					<div class="card">
 					  <div class="card-block">
 					    <h4 class="card-title color-1">Search Books</h4>
@@ -84,27 +84,30 @@
 					    <a href="#" class="btn btn-primary">Search</a>
 					  </div>
 					</div>
+
+					<button type="button" class="btn color-1-inverse btn-block sticky-bottom">Create Post</button>
 				</div>
+				<!-- /Left Panel -->
 
 				<!-- Right Panel -->
-				<div class="col-md-8">
+				<div class="col-lg-8 full-height">
 
-					<div class="card">
+					<div class="card full-height-sm">
 					  <div class="card-block">
-					    <h4 class="card-title">Post Listings</h4>
-					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					    <h4 class="card-title">Textbooks</h4>
 					  </div>
 
 						<!-- Post listings get put inside this div -->
 						<div class="list-group list-group-flush" id="bookListings"></div>
 
-					  <div class="card-block">
+					  <div class="card-block sticky-bottom">
 					    <a href="#" class="card-link"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</a>
 					    <a href="#" class="card-link pull-xs-right">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 					  </div>
 					</div>
 
 				</div>
+				<!-- /Right Panel -->
 
 			</div>
 		</div>
