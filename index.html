@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="full-height-sm">
+<html>
 <head>
   <title>Booklr</title>
 
@@ -25,7 +25,8 @@
 
 </head>
 
-<body class="full-height-sm">
+<body>
+<div class="wrapper">
 
 <nav class="navbar navbar-dark bg-inverse color-1-inverse">
  <div class="col-lg-2"></div>
@@ -55,7 +56,7 @@
 	</div>
 </nav>
 
-<div class="container-fluid main-content">
+<div class="container-fluid main-content full-height-sm">
 	<div class="row full-height-sm">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8 full-height-sm">
@@ -89,7 +90,7 @@
 					  </div>
 					</div>
 
-					<a type="button" id="create-post" class="btn color-1-inverse btn-block sticky-bottom">Create Post</a>
+					<a type="button" id="create-post" href="create_post.html" class="btn color-1-inverse btn-block sticky-bottom">Create Post</a>
 				</div>
 				<!-- /Left Panel -->
 
@@ -118,83 +119,17 @@
 	</div>
 </div>
 
-<footer class="footer color-2-inverse">
+</div><!-- /wrapper -->
+
+<!-- <footer class="footer color-2-inverse">
   <div class="container">
     <span class="text-muted footer-text"><b>SMC Programming Club</b> &mdash; All rights reserved</span>
   </div>
-</footer>
-<!--
-  <div class="header">
-    <h1 class="header-heading">Booklr</h1>
-  </div>
+</footer> -->
 
-  <div class="nav-bar">
-    <div class="container">
-      <ul class="nav">
-        <li><a href="#" id="login">Login</a></li>
-        <li><a href="#" id="logout">Logout</a></li>
-        <li><a href="#" id="username"></a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="container">
-      <div class="main">
-        <h2>Find Your Booklr</h2>
-
-        <hr>
-
-        <input type="search" name="search" placeholder="Search" />
-        <input type="submit" value="Go!" />
-
-        <div class="dropdown">
-          <button class="dropbtns dropbtn1">Author ⌄</button>
-          <div class="dropdown-content dropdown-content1">
-            <a href="#">Link 1</a>
-            <a href="#">Link 5</a>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button class="dropbtns dropbtn2">Subject ⌄</button>
-          <div class="dropdown-content dropdown-content2">
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button class="dropbtns dropbtn3">Quality ⌄</button>
-          <div class="dropdown-content dropdown-content3">
-            <a href="#">Link 3</a>
-            <a href="#">Link 4</a>
-          </div>
-        </div>
-        <p><a href="create_post.html" class="btn">Create Post</a></p>
-      </div>
-
-      <div class="aside">
-        <h3>Postings</h3>
-        <div id="bookListings">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  </div>
-
-
-  <div class="footer">
-    <div class="container">
-      &copy; Copyright Booklr 2016
-    </div>
-  </div>
--->
-  <script src="javascript/firebase_connection.js"></script>
-  <script src="javascript/facebook_login.js"></script>
-	<script src="javascript/dropdown-select.js"></script>
+<script src="javascript/firebase_connection.js"></script>
+<script src="javascript/facebook_login.js"></script>
+<script src="javascript/dropdown-select.js"></script>
 
 </body>
 </html>

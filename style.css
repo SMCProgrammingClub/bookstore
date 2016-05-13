@@ -19,7 +19,7 @@
 @media screen and (min-width: 62em) {
   .full-height {
     height: 100%;
-    position: relative;
+    padding-bottom: 16px;
   }
   .sticky-bottom {
     position: absolute;
@@ -30,7 +30,6 @@
 }
 .full-height-sm {
   height: 100%;
-  position: relative;
 }
 
 
@@ -38,7 +37,7 @@
 /*--{ NAVIGATION }--*/
 
 .navbar {
-  /*margin-bottom: 16px;*/
+  border-radius: 0;
 }
 
 
@@ -54,17 +53,29 @@
 
 /*--{ MAIN }--*/
 
+.wrapper {
+  /*min-height: 100%;*/
+  height: 100%;
+  /*margin-bottom: -60px;*/
+  padding-bottom: 60px;
+}
+/*.wrapper:after {
+  content: "";
+  display: block;
+}
+.footer {
+  height: 60px;
+  background-color: lightgreen;
+}*/
+
 .main-content {
   padding-top: 16px;
-  height: calc(100% - 60px);
+  height: 100%;
 }
 
-html {
-  position: relative;
-}
-body {
-  /* Padding bottom by footer height */
-  padding-bottom: 60px;
+html, body {
+  height: 100%;
+  padding: 0; margin: 0;
 }
 
 #create-post {
@@ -75,17 +86,16 @@ body {
 
 /*--{ FOOTER }--*/
 
-.footer {
-  position: fixed;
+/*.footer {
+  position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
-}
-.footer .container {
+}*/
+/*.footer .container {
   height: 100%;
-}
-.footer .footer-text {
+}*/
+/*.footer .footer-text {
   display: inline-block;
   margin-top: 25px;
-}
+}*/
