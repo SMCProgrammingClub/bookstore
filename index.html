@@ -36,9 +36,21 @@
 
 		<!-- Links -->
 		<ul class="nav navbar-nav pull-xs-right">
-			<li class="nav-item">
-				<a class="nav-link" href="#">Login</a>
-			</li>
+			<li class="nav-item"><a class="nav-link" href="#" id="login">Login</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li> -->
+			<!-- <li class="nav-item"><a class="nav-link" href="#" id="username"></a></li> -->
+
+			<!-- User menu -->
+			<li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" id="username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+				<!-- User menu options -->
+		    <div class="dropdown-menu">
+		      <a class="dropdown-item" href="#">Profile</a>
+		      <div class="dropdown-divider"></div>
+		      <a class="dropdown-item" id="logout" href="#">Logout</a>
+		    </div>
+		  </li>
+
 		</ul>
 	</div>
 </nav>
