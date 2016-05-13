@@ -1,4 +1,6 @@
-/* --{ color theme classes }-- */
+
+/*--{ COLOR THEMES }--*/
+
 .color-1 { color: #2980b9; }
 .color-2 { color: #2f3c3d; }
 .color-1-inverse {
@@ -10,7 +12,10 @@
   background-color: #2f3c3d;
 }
 
-/* --{ utility classes }-- */
+
+
+/*--{ UTILITIES }--*/
+
 @media screen and (min-width: 62em) {
   .full-height {
     height: 100%;
@@ -28,22 +33,26 @@
   position: relative;
 }
 
+
+
+/*--{ NAVIGATION }--*/
+
 .navbar {
   /*margin-bottom: 16px;*/
 }
 
-.post {
 
-}
-.post > .post-title {
-  font-weight: bold;
-}
-.post > .post-author {
 
-}
-.post > .post-price {
- float: right;
-}
+/*--{ POSTS }--*/
+
+.post {}
+.post > .post-title { font-weight: bold; }
+.post > .post-author {}
+.post > .post-price { float: right; }
+
+
+
+/*--{ MAIN }--*/
 
 .main-content {
   padding-top: 16px;
@@ -57,8 +66,17 @@ body {
   /* Padding bottom by footer height */
   padding-bottom: 60px;
 }
+
+#create-post {
+  margin-bottom: 16px;
+}
+
+
+
+/*--{ FOOTER }--*/
+
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
