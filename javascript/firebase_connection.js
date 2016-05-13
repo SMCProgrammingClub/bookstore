@@ -17,8 +17,9 @@ bookstoreBase.child('posts').once("value", function(snapshot){
 		// temporary html template
 		// again, edit as necessary
 		// <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+		var postKey = postSnapshot.ref().key();
 		bookListings.append(
-			"<a href='post' class='post list-group-item'>"+
+			"<a href='post/#/"+postKey+"' class='post list-group-item'>"+
 				"<span class='post-title'>"+title+"</span>"+
 				" - "+
 				"<span class='post-author'>"+author+"</span>"+
