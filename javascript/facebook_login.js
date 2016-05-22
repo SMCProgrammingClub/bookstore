@@ -1,4 +1,6 @@
 var ref = new Firebase("https://blinding-torch-3304.firebaseio.com");
+var usersRef = ref.child('users');
+
  $("#logout").hide();
 
 //login
@@ -19,6 +21,10 @@ ref.onAuth(function(authData) {
     $("#username").show();
     $("#logout").show();  
     $("#username").html(authData.facebook.displayName);
+    
+    usersRef.child(authData.uid).update({
+      name: authData.facebook.displayName
+    });
   }
 }); 
 
