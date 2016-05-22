@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html class="full-height-sm">
+
 <head>
   <title>Booklr</title>
 
@@ -8,21 +9,25 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<!-- Links for javascript APIs we are using -->
+  <!-- Links for javascript APIs we are using -->
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
 
-	<!-- Links for Bootstrap v4 alpha -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+  <!-- Links for Bootstrap v4 alpha -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+    integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+    crossorigin="anonymous"></script>
 
-	<!-- Font-Awesome library (for cool icons) -->
-	<script src="https://use.fontawesome.com/79ba6194f1.js"></script>
+  <!-- Font-Awesome library (for cool icons) -->
+  <script src="https://use.fontawesome.com/79ba6194f1.js"></script>
 
-	<!-- Link for custom css -->
-	<!--<link rel="stylesheet" type="text/css" href="index.css">-->
-	<link rel="stylesheet" type="text/css" href="style.css" />
+  <!-- Link for custom css -->
+  <!--<link rel="stylesheet" type="text/css" href="index.css">-->
+  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
 
@@ -30,106 +35,97 @@
 
 
   <nav class="navbar navbar-dark bg-inverse color-1-inverse">
-   <div class="col-lg-2"></div>
+    <div class="col-lg-2"></div>
 
-   <div class="col-lg-8">
-  		<!-- Brand -->
-  		<a class="navbar-brand" href="index.html">Booklr</a>
+    <div class="col-lg-8">
+      <!-- Brand -->
+      <a class="navbar-brand" href="index.html">Booklr</a>
 
-  		<!-- Links -->
-  		<ul class="nav navbar-nav pull-xs-right">
-  			<li class="nav-item"><a class="nav-link" href="#" id="login">Login</a></li>
-  			<!-- <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li> -->
-  			<!-- <li class="nav-item"><a class="nav-link" href="#" id="username"></a></li> -->
+      <!-- Links -->
+      <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item"><a class="nav-link" href="#" id="login">Login</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li> -->
+        <!-- <li class="nav-item"><a class="nav-link" href="#" id="username"></a></li> -->
 
-  			<!-- User menu -->
-  			<li class="nav-item dropdown">
-  		    <a class="nav-link dropdown-toggle" id="username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
-  				<!-- User menu options -->
-  		    <div class="dropdown-menu">
-  		      <a class="dropdown-item" href="#">Profile</a>
-  		      <div class="dropdown-divider"></div>
-  		      <a class="dropdown-item" id="logout" href="#">Logout</a>
-  		    </div>
-  		  </li>
+        <!-- User menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <!-- User menu options -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="logout" href="#">Logout</a>
+          </div>
+        </li>
 
-  		</ul>
-  	</div>
+      </ul>
+    </div>
   </nav>
 
 
 
-  <div class="container">
-        <div class="row">
-        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-
-        </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+  <div class="container-fluid main-content full-height-sm">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
 
 
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <h1 class="panel-title" style="padding: 20px;">First Middle Last</h1>
+        <div class="card" style="border-width: 0;">
+          <div class="card-block">
+            <img class="center-block" style="border-radius: 50%;" src="https://placehold.it/200x200" />
+          </div>
+          <div class="card-block">
+            <h2 class="card-title" style="text-align: center;">First Middle Last</h2>
+          </div>
+          <div class="card-block">
+            <div class="row">
+
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+
+                <table class="table table-user-information">
+                  <tbody>
+
+                    <tr>
+                      <td>Date of Birth</td>
+                      <td>01/01/2001</td>
+                    </tr>
+
+                    <tr>
+                      <td>Email</td>
+                      <td><a href="#">booklr@gmail.com</a></td>
+                    </tr>
+
+                    <tr>
+                      <td>Cell Phone</td>
+                      <td>310-123-4567</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
               </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-3 col-lg-3 " align="center" style="height: 250px"> <img alt="User Pic" src="http://xacatolicos.com/app/images/avatar/icon-user.png" style="object-fit: contain; width: 100%; height:100%" class="img-circle img-responsive"> </div>
-
-                  <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                    <dl>
-                      <dt>DEPARTMENT:</dt>
-                      <dd>Administrator</dd>
-                      <dt>HIRE DATE</dt>
-                      <dd>11/12/2013</dd>
-                      <dt>DATE OF BIRTH</dt>
-                         <dd>11/12/2013</dd>
-                      <dt>GENDER</dt>
-                      <dd>Male</dd>
-                    </dl>
-                  </div>-->
-                  <div class=" col-md-9 col-lg-9 ">
-                    <table class="table table-user-information">
-                      <tbody>
-
-                        <tr>
-                          <td>Date of Birth</td>
-                          <td>01/01/2001</td>
-                        </tr>
-
-                           <tr>
-                               <tr>
-                          <td>Gender</td>
-                          <td>Male</td>
-                        </tr>
-
-                        <tr>
-                          <td>Email</td>
-                          <td><a href="#">booklr@gmail.com</a></td>
-                        </tr>
-                          <td>Cell Phone</td>
-                          <td>310-123-4567
-                          </td>
-
-                        </tr>
-
-                      </tbody>
-                    </table>
-
-                  </div>
-                </div>
-              </div>
-                   <div class="panel-footer">
-                          <a data-original-title="Send Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                          <span class="pull-right">
-                              <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                          </span>
-                      </div>
-
             </div>
           </div>
+
+          <div class="card-block" style="text-align: center;">
+            <a class="btn btn-sm btn-primary" title="Send Message" data-toggle="tooltip" data-placement="top" type="button"><i class="fa fa-envelope"></i></a>
+            <a class="btn btn-sm btn-warning" title="Edit this user" data-toggle="tooltip" data-placement="top" type="button"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-sm btn-danger" title="Remove this user" data-toggle="tooltip" data-placement="top" type="button"><i class="fa fa-ban"></i></a>
+          </div>
+
         </div>
       </div>
+    </div>
+  </div>
 
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+  <script src="javascript/facebook_login.js"></script>
+  <script src="javascript/dropdown-select.js"></script>
 </body>
+
 </html>
