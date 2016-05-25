@@ -9,10 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Links for javascript APIs we are using -->
-  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
-
+ 	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  	<script src='javascript/jquery.ui.widget.js' type='text/javascript'></script>
+	<script src='javascript/jquery.iframe-transport.js' type='text/javascript'></script>
+	<script src='javascript/jquery.fileupload.js' type='text/javascript'></script>
+	<script src='javascript/jquery.cloudinary.js' type='text/javascript'></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
+	
 	<!-- Links for Bootstrap v4 alpha -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
@@ -38,8 +42,6 @@
 		<!-- Links -->
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="nav-item"><a class="nav-link" href="#" id="login">Login</a></li>
-			<!-- <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li> -->
-			<!-- <li class="nav-item"><a class="nav-link" href="#" id="username"></a></li> -->
 
 			<!-- User menu -->
 			<li class="nav-item dropdown">
@@ -64,177 +66,200 @@
 
 				<!-- Create Post Form -->
 				<form>
-					<h1>Create Post</h1>
+					<h1 class="text-xs-center">Create Post</h1>
 
+					<!--BOOK TITLE-->
 					<fieldset class="form-group">
-						<label> Book Title: </label>
+						<label>Book Title:</label>
 						<input id="book_title" type="text" class="form-control notification-required" name="book_title" autofocus required>
 					</fieldset>
 
-					<fieldset class="form-group">
-						<label> Author's Name: </label>
-						<input id="author" type="text" class="form-control notification-required" name="author" required>
-					</fieldset>
+					<div class="row">
+						<!--AUTHORS-->
+						<fieldset class="form-group col-sm-8">
+							<label>Author(s):</label>
+							<input id="author" type="text" class="form-control notification-required" name="author" required>
+						</fieldset>
 
-					<fieldset class="form-group">
-						<label for="isbn"> ISBN: </label>
-						<input id="isbn" type="text" class="form-control notification-required" name="isbn">
-					</fieldset>
+						<!--ISBN-->
+						<fieldset class="form-group col-sm-4">
+							<label for="isbn"> ISBN: </label>
+							<input id="isbn" type="text" class="form-control notification-required" name="isbn">
+						</fieldset>
+					</div>
+					
+					<div class="row">
+						<!--SUBJECT DROPDOWN-->
+						<fieldset class="form-group col-sm-8">
+							<label> Subject: </label>
+								<select id="subject" name="subject" class="form-control notification-required" required>
+									<option label="Subject"> </option>
+									<option label="Accounting">Accounting</option>
+									<option label="American Sign Language - Credit">American Sign Language - Credit</option>
+									<option label="American Sign Language - Noncredit">American Sign Language - Noncredit</option>
+									<option label="Anatomy">Anatomy</option>
+									<option label="Anthropology">Anthropology</option>
+									<option label="Arabic">Arabic</option>
+									<option label="Art">Art</option>
+									<option label="Art History">Art History</option>
+									<option label="Astronomy">Astronomy</option>
+									<option label="Biological Sciences">Biological Sciences</option>
+									<option label="Botany">Botany</option>
+									<option label="Broadcasting">Broadcasting</option>
+									<option label="Business">Business</option>
+									<option label="Chemistry">Chemistry</option>
+									<option label="Chinese">Chinese</option>
+									<option label="Cinema">Cinema</option>
+									<option label="Communication">Communication</option>
+									<option label="Communication Studies">Communication Studies</option>
+									<option label="Computer Applications">Computer Applications</option>
+									<option label="Computer Science">Computer Science</option>
+									<option label="Cosmetology">Cosmetology</option>
+									<option label="Counseling and Testing">Counseling and Testing</option>
+									<option label="Counseling - Adult Education">Counseling - Adult Education</option>
+									<option label="Counseling - Disabled Student Services">Counseling - Disabled Student Services</option>
+									<option label="Dance">Dance</option>
+									<option label="Dance History and Appreciation">Dance History and Appreciation</option>
+									<option label="Early Childhood Education">Early Childhood Education</option>
+									<option label="Economics">Economics</option>
+									<option label="Education">Education</option>
+									<option label="Energy Efficiency">Energy Efficiency</option>
+									<option label="Engineering">Engineering</option>
+									<option label="English Composition – Group A">English Composition – Group A</option>
+									<option label="English Fundamentals – Group B">English Fundamentals – Group B</option>
+									<option label="English Skills – Group C">English Skills – Group C</option>
+									<option label="English Literature">English Literature</option>
+									<option label="English – Creative Writing">English – Creative Writing</option>
+									<option label="ESL – English for Second Language Speakers">ESL – English for Second Language Speakers</option>
+									<option label="ESL – Noncredit">ESL – Noncredit</option>
+									<option label="Entertainment Technology">Entertainment Technology</option>
+									<option label="Academy of Entertainment &amp; Technology">Academy of Entertainment &amp; Technology</option>
+									<option label="Environmental Studies">Environmental Studies</option>
+									<option label="Fashion Design and Merchandising">Fashion Design and Merchandising</option>
+									<option label="Film Studies">Film Studies</option>
+									<option label="Foreign Languages">Foreign Languages</option>
+									<option label="French">French</option>
+									<option label="Geographic Information Systems">Geographic Information Systems</option>
+									<option label="Geography">Geography</option>
+									<option label="Geology">Geology</option>
+									<option label="German">German</option>
+									<option label="Global Studies">Global Studies</option>
+									<option label="Graphic Design">Graphic Design</option>
+									<option label="Health Education">Health Education</option>
+									<option label="Health Occupations">Health Occupations</option>
+									<option label="Hebrew">Hebrew</option>
+									<option label="History">History</option>
+									<option label="Independent Studies">Independent Studies</option>
+									<option label="Interior Architectural Design">Interior Architectural Design</option>
+									<option label="Internships">Internships</option>
+									<option label="Italian">Italian</option>
+									<option label="Japanese">Japanese</option>
+									<option label="Journalism">Journalism</option>
+									<option label="Kinesiology Physical Education">Kinesiology Physical Education</option>
+									<option label="Kinesiology Physical Education Aquatics">Kinesiology Physical Education Aquatics</option>
+									<option label="Kinesiology Physical Education Professional Courses">Kinesiology Physical Education Professional Courses</option>
+									<option label="Kinesiology Physical Education Team Sports">Kinesiology Physical Education Team Sports</option>
+									<option label="Varsity Intercollegiate Sports – Men">Varsity Intercollegiate Sports – Men</option>
+									<option label="Varsity Intercollegiate Sports – Women">Varsity Intercollegiate Sports – Women</option>
+									<option label="Korean">Korean</option>
+									<option label="Library Studies">Library Studies</option>
+									<option label="Linguistics">Linguistics</option>
+									<option label="Mathematics">Mathematics</option>
+									<option label="Media Studies">Media Studies</option>
+									<option label="Microbiology">Microbiology</option>
+									<option label="Modern Languages">Modern Languages</option>
+									<option label="Music">Music</option>
+									<option label="Music History and Appreciation">Music History and Appreciation</option>
+									<option label="Nursing">Nursing</option>
+									<option label="Nursing - Noncredit">Nursing - Noncredit</option>
+									<option label="Nutrition">Nutrition</option>
+									<option label="Occupational Therapy">Occupational Therapy</option>
+									<option label="Office Information Systems">Office Information Systems</option>
+									<option label="Office Technology">Office Technology</option>
+									<option label="Persian">Persian</option>
+									<option label="Philosophy">Philosophy</option>
+									<option label="Photography">Photography</option>
+									<option label="Photovoltaic Systems">Photovoltaic Systems</option>
+									<option label="Physics">Physics</option>
+									<option label="Physiology">Physiology</option>
+									<option label="Political Science">Political Science</option>
+									<option label="Political Science – Noncredit">Political Science – Noncredit</option>
+									<option label="Portuguese">Portuguese</option>
+									<option label="Psychology">Psychology</option>
+									<option label="Recycling and Resource Management">Recycling and Resource Management</option>
+									<option label="Religious Studies">Religious Studies</option>
+									<option label="Respiratory Therapy">Respiratory Therapy</option>
+									<option label="Russian">Russian</option>
+									<option label="Science - General Studies">Science - General Studies</option>
+									<option label="Sociology">Sociology</option>
+									<option label="Spanish">Spanish</option>
+									<option label="Speech">Speech</option>
+									<option label="Theatre Arts">Theatre Arts</option>
+									<option label="Urban Studies">Urban Studies</option>
+									<option label="Women’s Studies">Women’s Studies</option>
+									<option label="Zoology">Zoology</option>
+								</select>
+						</fieldset>
 
-					<fieldset class="form-group">
-						<label> Subject: </label>
-							<select id="subject" name="subject" class="form-control notification-required" required>
-								<option label="Subject"> </option>
-								<option label="Accounting">Accounting</option>
-								<option label="American Sign Language - Credit">American Sign Language - Credit</option>
-								<option label="American Sign Language - Noncredit">American Sign Language - Noncredit</option>
-								<option label="Anatomy">Anatomy</option>
-								<option label="Anthropology">Anthropology</option>
-								<option label="Arabic">Arabic</option>
-								<option label="Art">Art</option>
-								<option label="Art History">Art History</option>
-								<option label="Astronomy">Astronomy</option>
-								<option label="Biological Sciences">Biological Sciences</option>
-								<option label="Botany">Botany</option>
-								<option label="Broadcasting">Broadcasting</option>
-								<option label="Business">Business</option>
-								<option label="Chemistry">Chemistry</option>
-								<option label="Chinese">Chinese</option>
-								<option label="Cinema">Cinema</option>
-								<option label="Communication">Communication</option>
-								<option label="Communication Studies">Communication Studies</option>
-								<option label="Computer Applications">Computer Applications</option>
-								<option label="Computer Science">Computer Science</option>
-								<option label="Cosmetology">Cosmetology</option>
-								<option label="Counseling and Testing">Counseling and Testing</option>
-								<option label="Counseling - Adult Education">Counseling - Adult Education</option>
-								<option label="Counseling - Disabled Student Services">Counseling - Disabled Student Services</option>
-								<option label="Dance">Dance</option>
-								<option label="Dance History and Appreciation">Dance History and Appreciation</option>
-								<option label="Early Childhood Education">Early Childhood Education</option>
-								<option label="Economics">Economics</option>
-								<option label="Education">Education</option>
-								<option label="Energy Efficiency">Energy Efficiency</option>
-								<option label="Engineering">Engineering</option>
-								<option label="English Composition – Group A">English Composition – Group A</option>
-								<option label="English Fundamentals – Group B">English Fundamentals – Group B</option>
-								<option label="English Skills – Group C">English Skills – Group C</option>
-								<option label="English Literature">English Literature</option>
-								<option label="English – Creative Writing">English – Creative Writing</option>
-								<option label="ESL – English for Second Language Speakers">ESL – English for Second Language Speakers</option>
-								<option label="ESL – Noncredit">ESL – Noncredit</option>
-								<option label="Entertainment Technology">Entertainment Technology</option>
-								<option label="Academy of Entertainment &amp; Technology">Academy of Entertainment &amp; Technology</option>
-								<option label="Environmental Studies">Environmental Studies</option>
-								<option label="Fashion Design and Merchandising">Fashion Design and Merchandising</option>
-								<option label="Film Studies">Film Studies</option>
-								<option label="Foreign Languages">Foreign Languages</option>
-								<option label="French">French</option>
-								<option label="Geographic Information Systems">Geographic Information Systems</option>
-								<option label="Geography">Geography</option>
-								<option label="Geology">Geology</option>
-								<option label="German">German</option>
-								<option label="Global Studies">Global Studies</option>
-								<option label="Graphic Design">Graphic Design</option>
-								<option label="Health Education">Health Education</option>
-								<option label="Health Occupations">Health Occupations</option>
-								<option label="Hebrew">Hebrew</option>
-								<option label="History">History</option>
-								<option label="Independent Studies">Independent Studies</option>
-								<option label="Interior Architectural Design">Interior Architectural Design</option>
-								<option label="Internships">Internships</option>
-								<option label="Italian">Italian</option>
-								<option label="Japanese">Japanese</option>
-								<option label="Journalism">Journalism</option>
-								<option label="Kinesiology Physical Education">Kinesiology Physical Education</option>
-								<option label="Kinesiology Physical Education Aquatics">Kinesiology Physical Education Aquatics</option>
-								<option label="Kinesiology Physical Education Professional Courses">Kinesiology Physical Education Professional Courses</option>
-								<option label="Kinesiology Physical Education Team Sports">Kinesiology Physical Education Team Sports</option>
-								<option label="Varsity Intercollegiate Sports – Men">Varsity Intercollegiate Sports – Men</option>
-								<option label="Varsity Intercollegiate Sports – Women">Varsity Intercollegiate Sports – Women</option>
-								<option label="Korean">Korean</option>
-								<option label="Library Studies">Library Studies</option>
-								<option label="Linguistics">Linguistics</option>
-								<option label="Mathematics">Mathematics</option>
-								<option label="Media Studies">Media Studies</option>
-								<option label="Microbiology">Microbiology</option>
-								<option label="Modern Languages">Modern Languages</option>
-								<option label="Music">Music</option>
-								<option label="Music History and Appreciation">Music History and Appreciation</option>
-								<option label="Nursing">Nursing</option>
-								<option label="Nursing - Noncredit">Nursing - Noncredit</option>
-								<option label="Nutrition">Nutrition</option>
-								<option label="Occupational Therapy">Occupational Therapy</option>
-								<option label="Office Information Systems">Office Information Systems</option>
-								<option label="Office Technology">Office Technology</option>
-								<option label="Persian">Persian</option>
-								<option label="Philosophy">Philosophy</option>
-								<option label="Photography">Photography</option>
-								<option label="Photovoltaic Systems">Photovoltaic Systems</option>
-								<option label="Physics">Physics</option>
-								<option label="Physiology">Physiology</option>
-								<option label="Political Science">Political Science</option>
-								<option label="Political Science – Noncredit">Political Science – Noncredit</option>
-								<option label="Portuguese">Portuguese</option>
-								<option label="Psychology">Psychology</option>
-								<option label="Recycling and Resource Management">Recycling and Resource Management</option>
-								<option label="Religious Studies">Religious Studies</option>
-								<option label="Respiratory Therapy">Respiratory Therapy</option>
-								<option label="Russian">Russian</option>
-								<option label="Science - General Studies">Science - General Studies</option>
-								<option label="Sociology">Sociology</option>
-								<option label="Spanish">Spanish</option>
-								<option label="Speech">Speech</option>
-								<option label="Theatre Arts">Theatre Arts</option>
-								<option label="Urban Studies">Urban Studies</option>
-								<option label="Women’s Studies">Women’s Studies</option>
-								<option label="Zoology">Zoology</option>
-							</select>
-					</fieldset>
+							<!-- will need to add value for each option then use that value to have
+							the "class" list be specific to that subject (to avoid showing ALL of
+							smc classes for every subject) -->
 
-						<!-- will need to add value for each option then use that value to have
-						the "class" list be specific to that subject (to avoid showing ALL of
-						smc classes for every subject) -->
-
+						<!--CLASS-->
+						<fieldset class="form-group col-sm-4">
+							<label> Class: </label>
+								<input id="subject_class" name="subject_class" class="form-control notification-required" required>
+								</input>
+						</fieldset>
+					</div>
+					
+					<div class="row">
+						<!--PRICE-->
+						<fieldset class="form-group col-sm-8">
+							<label for="price">Price:</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input id="price" type="text" class="form-control notification-required" name="price" placeholder="Amount" required>
+								<div class="input-group-addon">.00</div>
+							</div>					
+						</fieldset>
+						
+						<!--CONDITION DROPDOWN-->
+						<fieldset class="form-group col-sm-4">
+							<label for="condition_type">Condition Type:</label>
+								<select id="condition_type" name="condition_type" class="form-control notification-required" required>
+									<option value="" label="Condition Type"></option>
+									<option value="new"> New </option>
+									<option value="like_new"> Like New </option>
+									<option value="very_good"> Very Good </option>
+									<option value="good"> Good </option>
+									<option value="acceptable"> Acceptable </option>
+									<option value="poor"> Poor </option>
+								</select>
+						</fieldset>
+					</div>
+					
+					<!--COMMENTS-->
 					<fieldset class="form-group">
-						<label> Class: </label>
-							<input id="subject_class" name="subject_class" class="form-control notification-required" required>
-							</input>
-					</fieldset>
-
-					<fieldset class="form-group">
-						<label for="condition_type">Condition Type:</label>
-							<select id="condition_type" name="condition_type" class="form-control notification-required" required>
-								<option value="" label="Condition Type"></option>
-								<option value="new"> New </option>
-								<option value="like_new"> Like New </option>
-								<option value="very_good"> Very Good </option>
-								<option value="good"> Good </option>
-								<option value="acceptable"> Acceptable </option>
-								<option value="poor"> Poor </option>
-							</select>
-					</fieldset>
-
-					<fieldset class="form-group">
-						<label for="price">Price:</label>
-						<input id="price" type="text" class="form-control notification-required" name="price" required>
-					</fieldset>
-
-					<fieldset class="form-group">
-						<label for="condition_comment">Comments:</label>
+						<input type="file" name="file" class="cloudinary_fileupload">
+						
+						<fieldset class="form-group">
+							<label for="condition_comment">Comments:</label>
 							<div>
-							<textarea id="condition_comment" name="condition_comment" rows="4" cols="40"></textarea>
+								<textarea id="condition_comment" name="condition_comment" style="width: 100%; height: 100%;"></textarea>
 							</div>
+						</fieldset>
 					</fieldset>
 
+					<!--BOOK IMAGE UPLOAD-->
 					<fieldset class="form-group">
-						<button type="submit" class="btn btn-default" name="upload">Upload a Picture!</button>
+							<img class="media-object center-block" width="256" height="256" id="book-picture" src="https://placehold.it/256x256" />
+							<button type="button" class="btn btn-default upload-button center-block" style="width: 256px; margin-top: 5px;" name="upload">Upload a Picture!</button>
 					</fieldset>
-
+					
+					<!--SUBMIT BUTTON-->
 					<fieldset class="form-group">
-
-						<!--<a type="submit" href="index.html" class="btn btn-primary" id="create-post-button">Book it!</a>-->
-						<input type="submit" value="Book it" class="btn btn-primary" id="create-post-button">
+						<input type="button" value="Book it" class="btn btn-lg btn-primary center-block" id="create-post-button">
 					</fieldset>
 
 				</form>

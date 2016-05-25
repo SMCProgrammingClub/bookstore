@@ -17,6 +17,7 @@ var testRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
       $("#book-condition").html(post.Condition);
       $("#book-subject").html(post.Subject);
       $("#book-description").html(post.Comments);
+      $("#book-image").attr("src", post.Image);
     }
   });
 });
