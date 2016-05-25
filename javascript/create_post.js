@@ -24,24 +24,28 @@ $('.cloudinary_fileupload').unsigned_cloudinary_upload("izaxgc4k",
     
     // Replace the placeholder with the uploaded image
     $('#book-picture').replaceWith(function() {
-      return $.cloudinary.image(data.result.public_id, { width: 256, height: 256 });
+      return $.cloudinary.image(data.result.public_id, { width: 256, height: 256 }).addClass('center-block');
     });
   });
-
+$('.cloudinary_fileupload').hide();
+$('.upload-button').click(function() {
+  $('.cloudinary_fileupload').trigger('click');
+});
 
 // Submit create post form
 
 $("#create-post-button").click(function() {
   // Create a post object with all of the REQUIRED values
   var post = {
-    Title:      $("#book_title").value,
-    Author:     $("#author").value,
-    Isbn:       $("#isbn").value,
-    Subject:    $("#subject").value,
-    Course:     $("#subject_class").value,
-    Condition:  $("#condition_type").value,
-    Price:      $("#price").value,
+    Title:      $("#book_title").val(),
+    Author:     $("#author").val(),
+    Isbn:       $("#isbn").val(),
+    Subject:    $("#subject").val(),
+    Course:     $("#subject_class").val(),
+    Condition:  $("#condition_type").val(),
+    Price:      $("#price").val(),
   }
+  console.log(post);
   
   // Loop over everything in the post object (only the REQUIRED stuff)
   for (var key in post) {
@@ -57,8 +61,11 @@ $("#create-post-button").click(function() {
   
   // Now that we have already checked that all the REQUIRED stuff is there,
   // add the stuff that isn't required here.
-  post.Comments = $("#condition_comment").value;
+  post.Comments = $("#condition_comment").val();
   post.Image = bookImageURL;
   console.log("Adding new post: ", post);
   var newBookstorePost =  bookstorePosts.push(post);
+  
+  // Redirect back to home page
+  location.href = 'index.html';
 }); 
