@@ -29,32 +29,18 @@ $('.cloudinary_fileupload').unsigned_cloudinary_upload("izaxgc4k",
   });
 
 
-/*              So JS is just being weird and does not throw the same errors when I did this before,
- *              but it feels like working now that we've put it into an array, so it's all good
- *              
-var form = {
-   book_title:         document.getElementById("book_title"),
-   author1:            document.getElementById("author"),
-   isbn1:              document.getElementById("isbn"),
-   subject1:           document.getElementById("subject"),
-   subject_class:      document.getElementById("subject_class"),
-   condition_type:     document.getElementById("condition_type"),
-   price1:             document.getElementById("price"),
-   condition_comment:  document.getElementById("condition_comment")
-}*/
+// Submit create post form
 
 $("#create-post-button").click(function() {
   // Create a post object with all of the REQUIRED values
   var post = {
-    Title:      document.getElementById("book_title").value,
-    Author:     document.getElementById("author").value,
-    Isbn:       document.getElementById("isbn").value,
-    Subject:    document.getElementById("subject").value,
-    Course:     document.getElementById("subject_class").value,
-    Condition:  document.getElementById("condition_type").value,
-    Price:      document.getElementById("price").value,
-    Image:      bookImageURL,
-   // Comments:   document.getElementById("condition_comment").value,
+    Title:      $("#book_title").value,
+    Author:     $("#author").value,
+    Isbn:       $("#isbn").value,
+    Subject:    $("#subject").value,
+    Course:     $("#subject_class").value,
+    Condition:  $("#condition_type").value,
+    Price:      $("#price").value,
   }
   
   // Loop over everything in the post object (only the REQUIRED stuff)
@@ -71,7 +57,8 @@ $("#create-post-button").click(function() {
   
   // Now that we have already checked that all the REQUIRED stuff is there,
   // add the stuff that isn't required here.
-  post.Comments = condition_comment.value;
+  post.Comments = $("#condition_comment").value;
+  post.Image = bookImageURL;
   console.log("Adding new post: ", post);
   var newBookstorePost =  bookstorePosts.push(post);
 }); 
