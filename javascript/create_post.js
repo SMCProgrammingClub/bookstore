@@ -2,6 +2,33 @@
 var bookstoreBase = new Firebase("https://blinding-torch-3304.firebaseio.com/");
 var bookstorePosts = bookstoreBase.child("posts");
 
+
+// Image uploading stuff
+
+// Set cloudinary config
+$.cloudinary.config({ cloud_name: 'smc-programming-club', api_key: '696479515726622' });
+var bookImageURL;
+
+// Set the upload button to upload to cloudinary
+$('.cloudinary_fileupload').unsigned_cloudinary_upload("izaxgc4k", 
+  { cloud_name: 'smc-programming-club' },
+  { multiple: false, return_delete_token: true })
+  
+  // This runs every time an image gets uploaded to cloudinary
+  .bind('cloudinarydone', function(e, data) {
+    console.log("Picture uploaded!");
+    
+    // Get the image url so we can save it to Firebase
+    var imgID = data.result.public_id;
+    bookImageURL = "http://res.cloudinary.com/smc-programming-club/image/upload/" + imgID;
+    
+    // Replace the placeholder with the uploaded image
+    $('#book-picture').replaceWith(function() {
+      return $.cloudinary.image(data.result.public_id, { width: 256, height: 256 });
+    });
+  });
+
+
 /*              So JS is just being weird and does not throw the same errors when I did this before,
  *              but it feels like working now that we've put it into an array, so it's all good
  *              
@@ -17,7 +44,6 @@ var form = {
 }*/
 
 $("#create-post-button").click(function() {
-  
   // Create a post object with all of the REQUIRED values
   var post = {
     Title:      document.getElementById("book_title").value,
@@ -27,6 +53,7 @@ $("#create-post-button").click(function() {
     Course:     document.getElementById("subject_class").value,
     Condition:  document.getElementById("condition_type").value,
     Price:      document.getElementById("price").value,
+    Image:      bookImageURL,
    // Comments:   document.getElementById("condition_comment").value,
   }
   
@@ -48,46 +75,3 @@ $("#create-post-button").click(function() {
   console.log("Adding new post: ", post);
   var newBookstorePost =  bookstorePosts.push(post);
 }); 
-
-
-
-
-
-
-
-// main connection to firebase
-/*
-var bookstoreBase = new Firebase("https://blinding-torch-3304.firebaseio.com/");
-var bookstorePosts = bookstoreBase.child("posts");
-
-var book_title = document.getElementById("book_title");
-var author1 = document.getElementById("author");
-var isbn1 = document.getElementById("isbn");
-var subject1 = document.getElementById("subject");
-var subject_class = document.getElementById("subject_class");
-var condition_type = document.getElementById("condition_type");
-var price1 = document.getElementById("price");
-var condition_comment = document.getElementById("condition_comment");
-
-$("#create-post-button").click(function() {
-
-  var title = book_title.value;
-  var author = author1.value;
-  var isbn = isbn1.value;
-  var subject = subject1.value;
-  var course = subject_class.value;
-  var condition = condition_type.value;
-  var price = price1.value;
-  var comments = condition_comment.value;
-  
-  if (!title || !author || !isbn || !subject || !course || !condition || !price || !comments) {
-    alert("Title of the book must be filled out!");
-    return;
-  }
-
-  newPost = { 'Title': title, 'Author': author, 'ISBN': isbn, 'Subject': subject, 'Course': course, 'Condition': condition, 'Price': price, 'Comments': comments };
-  console.log("Adding new post: ", newPost);
-  var newBookstorePost =  bookstorePosts.push(newPost);
-}); 
-
-*/
