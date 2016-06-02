@@ -10,14 +10,14 @@ var testRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
     } else {
 
       var post = snapshot.val();
-      $("#book-title").html(post.Title);
-      $("#book-author").html(post.Author);
-      $("#book-price").html("$"+post.Price);
-      $("#book-isbn").html(post.ISBN);
-      $("#book-condition").html(post.Condition);
-      $("#book-subject").html(post.Subject);
-      $("#book-description").html(post.Comments);
-      $("#book-image").attr("src", post.Image);
+      $("#book-title").html(post.title);
+      $("#book-author").html(post.author);
+      $("#book-price").html("$"+post.price);
+      $("#book-isbn").html(post.isbn);
+      $("#book-condition").html(post.condition);
+      $("#book-subject").html(post.subject);
+      $("#book-description").html(post.comments);
+      $("#book-image").attr("src", post.image);
     }
   });
 });

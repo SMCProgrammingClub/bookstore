@@ -7,7 +7,7 @@ var bookstorePosts = bookstoreBase.child("posts");
 
 // Set cloudinary config
 $.cloudinary.config({ cloud_name: 'smc-programming-club', api_key: '696479515726622' });
-var bookImageURL;
+var bookImageURL = '';
 
 // Set the upload button to upload to cloudinary
 $('.cloudinary_fileupload').unsigned_cloudinary_upload("izaxgc4k", 
@@ -37,13 +37,13 @@ $('.upload-button').click(function() {
 $("#create-post-button").click(function() {
   // Create a post object with all of the REQUIRED values
   var post = {
-    Title:      $("#book_title").val(),
-    Author:     $("#author").val(),
-    Isbn:       $("#isbn").val(),
-    Subject:    $("#subject").val(),
-    Course:     $("#subject_class").val(),
-    Condition:  $("#condition_type").val(),
-    Price:      $("#price").val(),
+    title:      $("#book_title").val(),
+    author:     $("#author").val(),
+    isbn:       $("#isbn").val(),
+    subject:    $("#subject").val(),
+    course:     $("#subject_class").val(),
+    condition:  $("#condition_type").val(),
+    price:      $("#price").val(),
   }
   console.log(post);
   
@@ -61,8 +61,8 @@ $("#create-post-button").click(function() {
   
   // Now that we have already checked that all the REQUIRED stuff is there,
   // add the stuff that isn't required here.
-  post.Comments = $("#condition_comment").val();
-  post.Image = bookImageURL;
+  post.comments = $("#condition_comment").val();
+  post.image = bookImageURL;
   console.log("Adding new post: ", post);
   var newBookstorePost =  bookstorePosts.push(post);
   
