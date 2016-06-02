@@ -97,6 +97,14 @@ $('#search-button').click(function(event) {
   window.location.hash = newHash;
 });
 
+// Click the search button when the user hits Enter in the search field
+$("#search-field").keydown(function(event){
+    if(event.keyCode == 13){
+      event.preventDefault();
+      $("#search-button").click();
+    }
+});
+
 // This route function will run every time the browser goes to a matching search URL
 var searchRoute = crossroads.addRoute('/search/{?searchQuery}', function(searchQuery) {
   // The searchQuery object will take search URL like:
