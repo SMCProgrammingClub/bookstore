@@ -153,6 +153,7 @@ function AuthManager() {
     }
     else {
       this.log('No Firebase authData');
+      this.transition(this.states.LOGGED_OUT);
     }
   }.bind(this));
 }

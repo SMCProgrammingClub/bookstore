@@ -2,6 +2,13 @@
 var bookstoreBase = authManager.fbRef;
 var bookstorePosts = bookstoreBase.child("posts");
 
+$(document).on('am:enterState', function(event, state) {
+  if (state === authManager.states.LOGGED_OUT) {
+    console.error('[CreatePost] Must be logged in to create post');
+    alert("You need to log in before you can create a post!");
+    window.location.href = "index.html";
+  }
+});
 
 // Image uploading stuff
 
