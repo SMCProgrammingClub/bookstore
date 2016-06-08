@@ -87,6 +87,11 @@ html, body {
 }
 
 
+/* Make everything square! */
+* {
+  border-radius: 0px !important;
+}
+
 /*--{ FOOTER }--*/
 
 /*.footer {

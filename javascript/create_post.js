@@ -1,5 +1,5 @@
 // main connection to firebase
-var bookstoreBase = new Firebase("https://blinding-torch-3304.firebaseio.com/");
+var bookstoreBase = authManager.fbRef;
 var bookstorePosts = bookstoreBase.child("posts");
 
 
@@ -44,6 +44,7 @@ $("#create-post-button").click(function() {
     course:     $("#subject_class").val(),
     condition:  $("#condition_type").val(),
     price:      $("#price").val(),
+    user:       authManager.authData.uid,
   }
   console.log(post);
   
