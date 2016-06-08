@@ -24,6 +24,7 @@
 
 	<!-- Link for custom css -->
 	<!--<link rel="stylesheet" type="text/css" href="index.css">-->
+	<link rel="stylesheet" type="text/css" href="bootstrap-social.css" />
 	<link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
@@ -40,13 +41,13 @@
 
 		<!-- Links -->
 		<ul class="nav navbar-nav pull-xs-right">
-			<li class="nav-item"><a class="nav-link" href="#" id="login">Login</a></li>
+			<li class="nav-item"><a class="nav-link logged-out" href="#" id="login">Login / Sign Up</a></li>
 			<!-- <li class="nav-item"><a class="nav-link" href="#" id="logout">Logout</a></li> -->
 			<!-- <li class="nav-item"><a class="nav-link" href="#" id="username"></a></li> -->
 
 			<!-- User menu -->
 			<li class="nav-item dropdown">
-		    <a class="nav-link dropdown-toggle" id="username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+		    <a class="nav-link dropdown-toggle logged-in" id="username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
 				<!-- User menu options -->
 		    <div class="dropdown-menu">
 		      <a class="dropdown-item" href="profile.html">Profile</a>
@@ -124,12 +125,51 @@
 
 </div><!-- /wrapper -->
 
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close signup-modal-close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Log In / Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-social btn-facebook authorizing" id="facebook-signup">
+					<i class="fa fa-facebook"></i>Connect with Facebook
+				</button>
+				
+				<form class="signing-up" id="signup-form">
+					<fieldset class="form-group">
+						<label>Name:</label>
+						<input id="signup-name" type="text" class="form-control" name="signup-name">
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Email:</label>
+						<input id="signup-email" type="text" class="form-control" name="signup-email">
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Phone (Text):</label>
+						<input id="signup-phone" type="text" class="form-control" name="signup-phone">
+					</fieldset>
+				</form>
+				
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary signup-modal-close">Cancel</button>
+        <button type="button" class="btn btn-primary" id="signup-modal-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- <footer class="footer color-2-inverse">
   <div class="container">
     <span class="text-muted footer-text"><b>SMC Programming Club</b> &mdash; All rights reserved</span>
   </div>
 </footer> -->
 
+<script src="javascript/authManager.js"></script>
 <script src="javascript/firebase_connection.js"></script>
 <script src="javascript/facebook_login.js"></script>
 <script src="javascript/dropdown-select.js"></script>
