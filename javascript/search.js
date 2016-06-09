@@ -1,7 +1,12 @@
 // main connection to firebase
-var bookstoreBase = new Firebase("https://blinding-torch-3304.firebaseio.com/");
+var bookstoreBase = authManager.fbRef;
 
 var bookListings = $('#bookListings');
+var postArray = [];
+var visiblePostArray = [];
+var pages = 1;
+var postsPerPage = 20;
+var searchableKeys = ['title', 'author', 'isbn'];
 
 // Puts a post object into the bookListings
 function listPost(post, key) {
@@ -26,11 +31,68 @@ function simplifyText(text) {
   return text.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
+function fetchAllPosts(cb) {
+  bookstoreBase.child('posts').once('value',
+  function(snapshot) {
+    var posts = snapshot.val();
+    cb(posts);
+  },
+  function(err) {
+    cb(null);
+  });
+}
+
+// Turn a posts object into an array of posts
+function convertPostsToSearchableArray(posts) {
+  var arr = [];
+  for (var postKey in posts) {
+    var post = posts[postKey];
+    post.key = postKey;
+    // Add 'searchable' versions of post keys to make searching terms easier
+    searchableKeys.forEach(function(elem, i, array) {
+      post['search' + elem] = simplifyText(post[elem]);
+    });
+    arr.push(post);
+  }
+  return arr;
+}
+
+function initialize(cb) {
+  fetchAllPosts(function(posts) {
+    postArray = convertPostsToSearchableArray(posts);
+    cb();
+  });
+}
+
+function showVisiblePosts() {
+  if (visiblePostArray.length > 0) {
+    bookListings.empty(); // Clear booklistings so we don't show any duplicate posts
+    var maxPosts = pages * postsPerPage;
+    for (var i = 0; i < maxPosts && i < visiblePostArray.length; i++) {
+      var p = visiblePostArray[i];
+      listPost(p, p.key);
+    }
+
+    // Hide the 'load more...' button if there are no more posts to load
+    if (visiblePostArray.length > maxPosts) {
+      $('#load-more').show();
+    }
+    else {
+      $('#load-more').hide();
+    }
+
+  }
+}
+
+function showAllPosts() {
+  visiblePostArray = postArray;
+  showVisiblePosts();
+}
+
 // Search all posts for the given term and list the results
 function searchPosts(searchTerm, searchKey) {
   
   // Return with an error if attempting to search with an invalid key
-  var searchableKeys = ['title', 'author', 'isbn'];
   if (searchableKeys.indexOf(searchKey) < 0) {
     console.error('Invalid search key: ' + searchKey);
     return false;
@@ -38,44 +100,23 @@ function searchPosts(searchTerm, searchKey) {
   
   console.log('Searching posts for ' + searchKey + ': ' + searchTerm);
   
-  bookListings.empty(); // Clear out the booklistings so only the matching posts appear
   searchTerm = simplifyText(searchTerm);
+
+    
+  // Using the Fuse.js library to find approximate matches.
+  // You can find the documentation here:
+  // http://kiro.me/projects/fuse.html
   
-  // Get all posts from Firebase
-  bookstoreBase.child('posts').once("value",
-  function(snapshot) {
-    var posts = snapshot.val();
-    
-    // Convert posts object into an array of posts
-    var postArray = [];
-    for (var postKey in posts) {
-      var post = posts[postKey];
-      if (post[searchKey]) { // We don't care about a post if it doesn't have the key we are searching for
-        post.key = postKey; // Add the firebase key as a property of the object to save it
-        post['search' + searchKey] = simplifyText(post[searchKey]); // Add a new property (eg: 'searchTitle') to save a simplified version of the title
-        postArray.push(post);
-      }
-    }
-    
-    // Using the Fuse.js library to find approximate matches.
-    // You can find the documentation here:
-    // http://kiro.me/projects/fuse.html
-    
-    // Set up a Fuse object to do a 'fuzzy' (approximate) search
-    var threshold = (searchKey === 'isbn') ? 0.0 : 0.4; // If searching by ISBN, don't do any fuzzy matching
-    var options = { keys: ['search' + searchKey], threshold: threshold };
-    var f = new Fuse(postArray, options);
-    
-    var results = f.search(searchTerm); // Returns an array of matching posts
-    results.forEach(function(match) {
-      listPost(match, match.key);
-    });
-    console.log('Search results:');
-    console.log(results);
-  },
-  function(error) {
-    console.error(error);
-  });
+  // Set up a Fuse object to do a 'fuzzy' (approximate) search
+  var threshold = (searchKey === 'isbn') ? 0.0 : 0.4; // If searching by ISBN, don't do any fuzzy matching
+  var options = { keys: ['search' + searchKey], threshold: threshold };
+  var f = new Fuse(postArray, options);
+  
+  visiblePostArray = f.search(searchTerm); // Returns an array of matching posts
+  showVisiblePosts();
+
+  console.log('Search results:');
+  console.log(visiblePostArray);
 }
 
 // When search-button is clicked, redirect browser to appropriate search URL
@@ -105,6 +146,23 @@ $("#search-field").keydown(function(event){
     }
 });
 
+$('#load-more').click(function(event) {
+  event.preventDefault();
+  pages++;
+  showVisiblePosts();
+});
+
+var baseRoute = crossroads.addRoute('/', function() {
+ if (postArray.length < 1) {
+   initialize(function() {
+     showAllPosts();
+   });
+ }
+ else {
+   showAllPosts();
+ }
+});
+
 // This route function will run every time the browser goes to a matching search URL
 var searchRoute = crossroads.addRoute('/search/{?searchQuery}', function(searchQuery) {
   // The searchQuery object will take search URL like:
@@ -116,8 +174,16 @@ var searchRoute = crossroads.addRoute('/search/{?searchQuery}', function(searchQ
   var searchKey = Object.keys(searchQuery)[0];
   var searchTerm = decodeURI(searchQuery[searchKey]); // eg: "Hello%20world" -> "Hello world"
   
-  searchPosts(searchTerm, searchKey);
-});
+  if (postArray.length < 1) {
+    initialize(function() {
+      searchPosts(searchTerm, searchKey);
+    });
+  }
+  else {
+    searchPosts(searchTerm, searchKey);
+  }
+
+}, 5);
 
 
 // This junk makes the router work, not important
