@@ -4,6 +4,10 @@ if(!authManager) {
 
 // Get everything in a good initial state
 $(".logged-in").hide();
+$("#signup-modal").modal({
+  show: false,
+  keyboard: false
+});
 
 $(document).on('am:enterState', function(event, state) {
   if (state === authManager.states.LOGGED_OUT) {
@@ -78,13 +82,18 @@ function fillSignupForm() {
 }
 
 $("#signup-modal-submit").click(function() {
+  var contactValue = $("#contact-field").val();
+  var contactKey = $("#contact-type").text().trim().toLowerCase();
   var newUser = {
     name: $("#signup-name").val(),
     contact: {
-      email: $("#signup-email").val(),
-      phone: $("#signup-phone").val(),
+      preferred: ''
     }
   }
+  newUser.contact.preferred = contactKey;
+  newUser.contact[contactKey] = contactValue;
+
+  console.log(newUser);
   
   if (authManager.isUserValid(newUser)) {
     authManager.updateUser(newUser, function(err) {

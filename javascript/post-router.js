@@ -55,7 +55,10 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
           $("#book-image").attr("src", post.image);
 
           $("#user-name").text(owner.name);
-          $("#user-contact").text("Contact: " + owner.contact);
+          var pref = owner.contact.preferred;
+          var contactValue = owner.contact[pref];
+          pref = pref.charAt(0).toUpperCase() + pref.slice(1); // Capitalize eg: 'email' -> 'Email'
+          $("#user-contact").text(pref + ": " + contactValue);
 
           $(document).on('am:enterState', function(event, state) {
             if (state === authManager.states.LOGGED_IN && isPostOwner(post, authManager.authData.uid)) {

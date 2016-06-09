@@ -1205,6 +1205,7 @@
 		"u1": {
 			"name": "Lisa",
 			"contact": {
+				"preferred": "email",
 				"email": "lisa@jupiter.net"
 			}
 		}
