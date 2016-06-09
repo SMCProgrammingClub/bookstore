@@ -89,6 +89,7 @@ function AuthManager() {
 
   };
 
+
   this.fetchUser = function (cb) {
     var uid = this.authData.uid;
     this.fbRef.child('users').child(uid).once('value',
@@ -159,7 +160,7 @@ function AuthManager() {
 }
 
 $(document).on('am:stateChange', function (e, currentState, nextState) {
-  console.log('%c[AuthManager] State change: ' + currentState + ' -> ' + nextState, 'color: blue');
+    console.log('%c[AuthManager] State change: ' + currentState + ' -> ' + nextState, 'color: blue');
 });
 
 var authManager = new AuthManager();

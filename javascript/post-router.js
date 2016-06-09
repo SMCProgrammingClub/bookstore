@@ -1,5 +1,8 @@
 var bookstoreBase = authManager.fbRef;
 
+var post;
+var owner;
+
 function isValidPost(post) {
   return (post && post.title && post.author && post.price && post.isbn && post.condition && post.subject && post.user);
 }
@@ -12,12 +15,23 @@ function invalidPostRedirect() {
   window.location.href = "../index.html";
 }
 
+function isPostOwner(post, uid) {
+  return post.user === uid;
+}
+
+function showOwnerView() {
+  $(".owner").show();
+}
+function hideOwnerView() {
+  $(".owner").hide();
+}
+
 var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
 
   var fbPost = bookstoreBase.child("posts/" + firebaseID);
   fbPost.once("value", function(snapshot) {
 
-    var post = snapshot.val();
+    post = snapshot.val();
     if(!isValidPost(post)) {
       console.error("[PostRouter] Post with ID: " + firebaseID + " is not valid");
       invalidPostRedirect();
@@ -26,8 +40,8 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
 
       var fbUser = bookstoreBase.child("users/" + post.user);
       fbUser.once("value", function(userSnap) {
-        var user = userSnap.val();
-        if(!isValidUser(user)) {
+        owner = userSnap.val();
+        if(!isValidUser(owner)) {
           console.error("[PostRouter] User with ID: " + post.user + " is not valid");
           invalidPostRedirect();
         }
@@ -41,8 +55,32 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
           $("#book-description").text(post.comments);
           $("#book-image").attr("src", post.image);
 
-          $("#user-name").text(user.name);
-          $("#user-contact").text("Contact: " + user.contact);
+          $("#user-name").text(owner.name);
+          $("#user-contact").text("Contact: " + owner.contact);
+
+          $(document).on('am:enterState', function(event, state) {
+            if (state === authManager.states.LOGGED_IN && isPostOwner(post, authManager.authData.uid)) {
+              console.log("[PostRouter] Current user created this post");
+              showOwnerView();
+            }
+            else {
+              hideOwnerView();
+            }
+          });
+          $(document).trigger('am:enterState', [authManager.state]);
+
+          $("#delete-post").click(function() {
+            if (authManager.state === authManager.states.LOGGED_IN && isPostOwner(post, authManager.authData.uid)) {
+              if(confirm("Are you sure you want to delete this post?")) {
+                console.log("[PostRouter] Deleting post");
+                fbPost.remove();
+                window.location.href = '../index.html';
+              }
+            }
+            else {
+              console.error("[PostRouter] You must be logged in as this post's owner to delete the post! Nice try");
+            }
+          });
         }
       });
     }

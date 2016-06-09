@@ -70,11 +70,15 @@
 				<div class="col-lg-8 full-height">
           <div class="card full-height-sm">
 
-            <div class="card-block media">
-              <div class="media-left">
-                <img class="media-object" id="book-image" width="256" height="256" src="https://placehold.it/256x256" />
+            <div class="card-block row">
+              <div class="col-xl-5">
+                <img class="img-fluid img-thumbnail" id="book-image" src="https://placehold.it/512x512" />
               </div>
-              <div class="media-body">
+              <div class="col-xl-7">
+                <p class="owner" style="text-align: right;">
+                  <!--<button type="button" class="btn btn-primary-outline btn-sm">Edit</button>-->
+                  <button id="delete-post" type="button" class="btn btn-danger-outline btn-sm">Delete</button>
+                </p>
                 <h2 class="media-heading"><span id="book-title"></span><span id="book-price" class="text-muted pull-xs-right"></span></h2>
                 <p class="text-muted" id="book-author"></p>
 
