@@ -74,10 +74,15 @@ $(document).trigger('am:enterState', [authManager.state]);
  });
 
 function fillSignupForm() {
-  if (authManager.authData && authManager.authData.facebook && authManager.authData.facebook.displayName) {
-    $("#signup-name").attr("placeholder", authManager.authData.facebook.displayName);
-    $("#signup-name").val(authManager.authData.facebook.displayName);
-    $("#signup-name").attr("readonly", true);
+  if (authManager.authData && authManager.authData.facebook) {
+    if (authManager.authData.facebook.displayName) {
+      $("#signup-name").attr("placeholder", authManager.authData.facebook.displayName);
+      $("#signup-name").val(authManager.authData.facebook.displayName);
+      $("#signup-name").attr("readonly", true);
+    }
+    if (authManager.authData.facebook.profileImageURL) {
+      $("#profile-image").attr("src", authManager.authData.facebook.profileImageURL);
+    }
   }
 }
 
@@ -86,9 +91,13 @@ $("#signup-modal-submit").click(function() {
   var contactKey = $("#contact-type").text().trim().toLowerCase();
   var newUser = {
     name: $("#signup-name").val(),
+    image: '',
     contact: {
       preferred: ''
     }
+  }
+  if ($("#use-image").is(":checked")) {
+    newUser.image = $("#profile-image").attr("src");
   }
   newUser.contact.preferred = contactKey;
   newUser.contact[contactKey] = contactValue;
