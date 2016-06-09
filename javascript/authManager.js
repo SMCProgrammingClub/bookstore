@@ -3,7 +3,11 @@ function AuthManager() {
     return new AuthManager();
   }
 
-  this.fbRef = new Firebase("https://blinding-torch-3304.firebaseio.com");
+  // this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com"); // Use this for real data
+  this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com/test"); // Use this for test data
+  this.fbPostsRef = this.fbBaseRef.child('posts');
+  this.fbUsersRef = this.fbBaseRef.child('users');
+
   this.authData;
   this.fbUser;
   
@@ -19,7 +23,6 @@ function AuthManager() {
   };
 
   this.states = {
-    // INITIALIZING: 'INITIALIZING',
     LOGGED_OUT: 'LOGGED_OUT',
     AUTHORIZING: 'AUTHORIZING',
     VALIDATING: 'VALIDATING',
@@ -37,9 +40,6 @@ function AuthManager() {
   };
 
   this.nextStates = {
-    // INITIALIZING: {
-    //   LOGGED_OUT: 'LOGGED_OUT',
-    // },
     LOGGED_OUT: {
       AUTHORIZING: 'AUTHORIZING',
       VALIDATING: 'VALIDATING',
@@ -63,7 +63,7 @@ function AuthManager() {
     }
   };
 
-  // this.state = this.states.INITIALIZING;
+  // Set the initial state
   this.state = this.states.LOGGED_OUT;
 
   this.isValidTransitionState = function (nextState) {
@@ -92,7 +92,7 @@ function AuthManager() {
 
   this.fetchUser = function (cb) {
     var uid = this.authData.uid;
-    this.fbRef.child('users').child(uid).once('value',
+    this.fbUsersRef.child(uid).once('value',
       function (snapshot) {
         this.fbUser = snapshot.val();
         cb();
@@ -109,7 +109,7 @@ function AuthManager() {
   };
   
   this.facebookAuth = function () {
-    this.fbRef.authWithOAuthPopup('facebook', function(err, authData) {
+    this.fbBaseRef.authWithOAuthPopup('facebook', function(err, authData) {
       if (err) {
         this.error('Facebook auth failed!');
       }
@@ -122,7 +122,7 @@ function AuthManager() {
   this.updateUser = function(newUser, cb) {
     var uid = this.authData.uid;
     this.log('Updating user');
-    this.fbRef.child('users').child(uid).update(newUser, function(err) {
+    this.fbUsersRef.child(uid).update(newUser, function(err) {
       if(!err) {
         this.log('User update succeeded');
       }
@@ -133,7 +133,7 @@ function AuthManager() {
     }.bind(this));
   }
 
-  this.fbRef.onAuth(function (authData) {
+  this.fbBaseRef.onAuth(function (authData) {
     this.log('Firebase onAuth');
     if (authData) {
       this.authData = authData;

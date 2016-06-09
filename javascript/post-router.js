@@ -1,4 +1,3 @@
-var bookstoreBase = authManager.fbRef;
 
 var post;
 var owner;
@@ -28,7 +27,7 @@ function hideOwnerView() {
 
 var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
 
-  var fbPost = bookstoreBase.child("posts/" + firebaseID);
+  var fbPost = authManager.fbPostsRef.child(firebaseID);
   fbPost.once("value", function(snapshot) {
 
     post = snapshot.val();
@@ -38,7 +37,7 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
     }
     else {
 
-      var fbUser = bookstoreBase.child("users/" + post.user);
+      var fbUser = authManager.fbUsersRef.child(post.user);
       fbUser.once("value", function(userSnap) {
         owner = userSnap.val();
         if(!isValidUser(owner)) {

@@ -1,6 +1,3 @@
-// main connection to firebase
-var bookstoreBase = authManager.fbRef;
-var bookstorePosts = bookstoreBase.child("posts");
 
 $(document).on('am:enterState', function(event, state) {
   if (state === authManager.states.LOGGED_OUT) {
@@ -72,7 +69,7 @@ $("#create-post-button").click(function() {
   post.comments = $("#condition_comment").val();
   post.image = bookImageURL;
   console.log("Adding new post: ", post);
-  var newBookstorePost =  bookstorePosts.push(post);
+  var newBookstorePost =  authManager.fbPostsRef.push(post);
   
   // Redirect back to home page
   location.href = 'index.html';

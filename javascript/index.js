@@ -1,11 +1,9 @@
-// main connection to firebase
-var bookstoreBase = authManager.fbRef;
 
 var bookListings = $('#bookListings');
 var postArray = [];
 var visiblePostArray = [];
 var pages = 1;
-var postsPerPage = 20;
+var postsPerPage = 12;
 var searchableKeys = ['title', 'author', 'isbn'];
 
 // Puts a post object into the bookListings
@@ -31,8 +29,9 @@ function simplifyText(text) {
   return text.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
+// Get every post from firebase
 function fetchAllPosts(cb) {
-  bookstoreBase.child('posts').once('value',
+  authManager.fbPostsRef.once('value',
   function(snapshot) {
     var posts = snapshot.val();
     cb(posts);
@@ -85,12 +84,14 @@ function showVisiblePosts() {
 }
 
 function showAllPosts() {
+  pages = 1;
   visiblePostArray = postArray;
   showVisiblePosts();
 }
 
 // Search all posts for the given term and list the results
 function searchPosts(searchTerm, searchKey) {
+  pages = 1;
   
   // Return with an error if attempting to search with an invalid key
   if (searchableKeys.indexOf(searchKey) < 0) {
@@ -152,9 +153,10 @@ $('#load-more').click(function(event) {
   showVisiblePosts();
 });
 
+// This route function will run when the browser goes to the main page "index.html" or "/"
 var baseRoute = crossroads.addRoute('/', function() {
  if (postArray.length < 1) {
-   initialize(function() {
+   initialize(function() { // Initialize to get all posts from firebase if we haven't already
      showAllPosts();
    });
  }
@@ -183,7 +185,7 @@ var searchRoute = crossroads.addRoute('/search/{?searchQuery}', function(searchQ
     searchPosts(searchTerm, searchKey);
   }
 
-}, 5);
+});
 
 
 // This junk makes the router work, not important

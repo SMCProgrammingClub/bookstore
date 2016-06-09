@@ -1,10 +1,8 @@
-// main connection to firebase
-var bookstoreBase = new Firebase("https://blinding-torch-3304.firebaseio.com/");
 
 var bookListings = $('#bookListings');
 
 // loads the posts into the html
-bookstoreBase.child('posts').once("value", function(snapshot){
+authManager.fbPostsRef.once("value", function(snapshot){
 	snapshot.forEach(function(postSnapshot){
 		var postSnap = postSnapshot.val();
 

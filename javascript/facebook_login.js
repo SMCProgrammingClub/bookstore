@@ -14,7 +14,7 @@ $(document).on('am:enterState', function(event, state) {
     $(".authorizing").hide();
     $(".signing-up").hide();
     $("#signup-modal").modal('hide');
-    authManager.fbRef.unauth();
+    authManager.fbBaseRef.unauth();
   }
   else if (state === authManager.states.LOGGED_IN) {
     $(".logged-in").show();
@@ -44,7 +44,7 @@ $(document).on('am:enterState', function(event, state) {
   else if (state === authManager.states.SIGNING_UP) {
     $("#signup-modal").modal('show');
     $(".signing-up").show();
-    fillSignupForm(authManager.fbUser);
+    fillSignupForm();
     
     $(".logged-out").hide();
     $(".logged-in").hide();
@@ -53,24 +53,6 @@ $(document).on('am:enterState', function(event, state) {
 });
 
 $(document).trigger('am:enterState', [authManager.state]);
-
-// $(document).on('exitAuthState', function(event, state) {
-//   if (state === authManager.states.LOGGED_OUT) {
-//     $(".logged-out").hide();
-//   }
-//   else if (state === authManager.states.LOGGED_IN) {
-//     $(".logged-in").hide();
-//   }
-//   else if (state === authManager.states.AUTHORIZING) {
-//     $(".authorizing").hide();
-//   }
-//   else if (state === authManager.states.VALIDATING) {
-    
-//   }
-//   else if (state === authManager.states.SIGNING_UP) {
-    
-//   }
-// });
 
 
 
@@ -87,23 +69,11 @@ $(document).trigger('am:enterState', [authManager.state]);
    authManager.transition(authManager.states.LOGGED_OUT);
  });
 
-function fillSignupForm(user) {
-  if (user.name) {
-    $("#signup-name").attr("placeholder", user.name);
-    $("#signup-name").val(user.name);
+function fillSignupForm() {
+  if (authManager.authData && authManager.authData.facebook && authManager.authData.facebook.displayName) {
+    $("#signup-name").attr("placeholder", authManager.authData.facebook.displayName);
+    $("#signup-name").val(authManager.authData.facebook.displayName);
     $("#signup-name").attr("readonly", true);
-  }
-  if (user.contact) {
-    if (user.contact.email) {
-      $("#signup-email").attr("placeholder", user.contact.email);
-      $("#signup-email").val(user.contact.email);
-      $("#signup-email").attr("readonly", true);
-    }
-    if (user.contact.phone) {
-      $("#signup-phone").attr("placeholder", user.contact.phone);
-      $("#signup-phone").val(user.contact.phone);
-      $("#signup-phone").attr("readonly", true);
-    }
   }
 }
 
