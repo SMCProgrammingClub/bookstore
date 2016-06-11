@@ -24,7 +24,7 @@ $(document).on('am:enterState', function(event, state) {
     $(".logged-in").show();
     $("#username").text(authManager.fbUser.name);
     var escapedUID = encodeURIComponent(authManager.authData.uid);
-    $("#user-profile-link").attr('href', 'profile/#/' + escapedUID);
+    $("#user-profile-link").attr('href', '/profile/#/' + escapedUID);
     
     $(".logged-out").hide();
     $(".authorizing").hide();
