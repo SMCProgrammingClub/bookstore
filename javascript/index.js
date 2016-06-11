@@ -15,10 +15,10 @@ function listPost(post, key) {
   }
   bookListings.append(
     "<a href='post/#/"+key+"' class='post list-group-item'>"+
+      "<span class='post-price label label-success'>$"+post.price+"</span>"+
       "<span class='post-title'>"+post.title+"</span>"+
       " - "+
       "<span class='post-author'>"+post.author+"</span>"+
-      "<span class='post-price'>$"+post.price+"</span>"+
     "</a>"
   );
 }

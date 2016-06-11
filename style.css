@@ -42,12 +42,30 @@
 
 
 
-/*--{ POSTS }--*/
+/*--{ POST LISTING }--*/
 
 .post {}
 .post > .post-title { font-weight: bold; }
-.post > .post-author {}
+.post > .post-author {
+  display: block;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+@media screen and (min-width: 62em) {
+  .post > .post-author {
+    display: inline;
+  }
+}
 .post > .post-price { float: right; }
+
+
+
+/*--{ POST PAGE }--*/
+
+#book-image {
+  /*height: 512px;*/
+  margin-bottom: 14px;
+}
 
 
 
