@@ -86,6 +86,10 @@ html, body {
   color: gold;
 }
 
+#user-image {
+  max-width: 256px;
+}
+
 
 /* Make everything square! */
 * {

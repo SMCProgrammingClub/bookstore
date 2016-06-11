@@ -34,7 +34,12 @@ var profileRoute = crossroads.addRoute('/{escapedUID}', function (escapedUID) {
       if (user.image) {
         $('#user-image').attr('src', user.image);
       }
+      else {
+        $('#user-image').attr('src', "https://placehold.it/200x200");
+      }
       $('#user-name').text(user.name);
+
+      $('#contact-table').empty();
 
       for (c in user.contact) {
         if (c !== 'preferred') {

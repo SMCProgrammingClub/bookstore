@@ -55,9 +55,14 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
           $("#book-image").attr("src", post.image);
 
           $("#user-name").text(owner.name);
+
+          var profileLink = '/profile/#/' + post.user;
+          $("#owner-profile-link").attr('href', profileLink);
+
           if (owner.image) {
             $("#user-image").attr("src", owner.image);
           }
+          
           var pref = owner.contact.preferred;
           var contactValue = owner.contact[pref];
           pref = pref.charAt(0).toUpperCase() + pref.slice(1); // Capitalize eg: 'email' -> 'Email'
