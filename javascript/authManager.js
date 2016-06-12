@@ -1,10 +1,10 @@
-function AuthManager() {
+function AuthManager(config) {
   if (!(this instanceof AuthManager)) {
     return new AuthManager();
   }
 
-  // this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com"); // Use this for real data
-  this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com/test"); // Use this for test data
+  this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com/" + config.firebaseRoot);
+  this.fbConfigRef = this.fbBaseRef.child('config');
   this.fbPostsRef = this.fbBaseRef.child('posts');
   this.fbUsersRef = this.fbBaseRef.child('users');
 
@@ -21,6 +21,8 @@ function AuthManager() {
     if (this.debug)
       console.error('[AuthManager] Error: ' + msg);
   };
+
+  this.log(config);
 
   this.states = {
     LOGGED_OUT: 'LOGGED_OUT',
@@ -163,9 +165,10 @@ $(document).on('am:stateChange', function (e, currentState, nextState) {
     console.log('%c[AuthManager] State change: ' + currentState + ' -> ' + nextState, 'color: blue');
 });
 
-var authManager = new AuthManager();
-// if (authManager.state === authManager.states.INITIALIZING) {
-//   authManager.transition(authManager.states.LOGGED_OUT);
-// }
+var config = {
+  firebaseRoot: 'test',
+}
+  var authManager = new AuthManager(config);
+
 
 

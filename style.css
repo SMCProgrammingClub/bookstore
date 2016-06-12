@@ -56,7 +56,10 @@
     display: inline;
   }
 }
-.post > .post-price { float: right; }
+.post > .post-price {
+  font-size: 1rem;
+  float: right;
+}
 
 
 
