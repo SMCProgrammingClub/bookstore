@@ -171,7 +171,7 @@ var config = {
   siteRoot: '/'
 }
 
-if (window.location.host === 'smcprogramming.github.io') {
+if (window.location.host.includes('github.io')) {
   config.siteRoot = '/bookstore/';
 }
 
