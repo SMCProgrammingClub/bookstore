@@ -68,7 +68,10 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
           var pref = owner.contact.preferred;
           var contactValue = owner.contact[pref];
           pref = pref.charAt(0).toUpperCase() + pref.slice(1); // Capitalize eg: 'email' -> 'Email'
-          $("#user-contact").text(pref + ": " + contactValue);
+
+          var protocol = (pref === 'Email') ? 'mailto:' : 'tel:'; // Set the link protocol
+
+          $("#user-contact").html(pref + ": <a href='"+ protocol + contactValue +"'>" + contactValue + "</a>");
 
           $(document).on('am:enterState', function(event, state) {
             if (state === authManager.states.LOGGED_IN && isPostOwner(post, authManager.authData.uid)) {

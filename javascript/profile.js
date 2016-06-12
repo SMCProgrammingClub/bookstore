@@ -11,11 +11,14 @@ function invalidUserRedirect() {
 
 function addContactInfo(key, val) {
   var Key = key.charAt(0).toUpperCase() + key.slice(1);
+  var protocol = (key === 'email') ? 'mailto:' : 'tel:';
 
   $('#contact-table').append(
     "<tr id='contact-"+ key +"'>" +
       "<th scope='row'>" + Key +"</th>" +
-      "<td>" + val +"</td>" +
+      "<td>" +
+        "<a href='"+ protocol + val +"'>" + val + "</a>" +
+      "</td>" +
     "</tr>");
 }
 
