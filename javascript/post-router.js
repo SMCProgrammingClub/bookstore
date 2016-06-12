@@ -2,6 +2,8 @@
 var post;
 var owner;
 
+var siteRoot = authManager.config.siteRoot;
+
 function isValidPost(post) {
   return (post && post.title && post.author && post.price && post.isbn && post.condition && post.subject && post.user);
 }
@@ -56,7 +58,7 @@ var postRoute = crossroads.addRoute('/{firebaseID}', function(firebaseID){
 
           $("#user-name").text(owner.name);
 
-          var profileLink = '/profile/#/' + post.user;
+          var profileLink = siteRoot + 'profile/#/' + post.user;
           $("#owner-profile-link").attr('href', profileLink);
 
           if (owner.image) {

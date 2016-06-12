@@ -2,7 +2,7 @@ function AuthManager(config) {
   if (!(this instanceof AuthManager)) {
     return new AuthManager();
   }
-
+  this.config = config;
   this.fbBaseRef = new Firebase("https://blinding-torch-3304.firebaseio.com/" + config.firebaseRoot);
   this.fbConfigRef = this.fbBaseRef.child('config');
   this.fbPostsRef = this.fbBaseRef.child('posts');
@@ -165,10 +165,17 @@ $(document).on('am:stateChange', function (e, currentState, nextState) {
     console.log('%c[AuthManager] State change: ' + currentState + ' -> ' + nextState, 'color: blue');
 });
 
+
 var config = {
   firebaseRoot: 'test',
+  siteRoot: '/'
 }
-  var authManager = new AuthManager(config);
+
+if (window.location.host === 'smcprogramming.github.io') {
+  config.siteRoot = '/bookstore/';
+}
+
+var authManager = new AuthManager(config);
 
 
 
