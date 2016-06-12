@@ -6,7 +6,8 @@ if(!authManager) {
 $(".logged-in").hide();
 $("#signup-modal").modal({
   show: false,
-  keyboard: false
+  keyboard: false,
+  backdrop: 'static'
 });
 
 $(document).on('am:enterState', function(event, state) {
