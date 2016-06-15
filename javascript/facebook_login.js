@@ -17,6 +17,8 @@ $(document).on('am:enterState', function(event, state) {
     $(".logged-out").show();
     $("#username").text('');
     
+    $("#contact-block").hide();
+    $("#user-contact").hide();
     $(".logged-in").hide();
     $(".authorizing").hide();
     $(".signing-up").hide();
@@ -28,7 +30,9 @@ $(document).on('am:enterState', function(event, state) {
     $("#username").text(authManager.fbUser.name);
     var escapedUID = encodeURIComponent(authManager.authData.uid);
     $("#user-profile-link").attr('href', siteRoot + 'profile/#/' + escapedUID);
-    
+    $("#user-contact").show();
+    $("#contact-block").show();
+      
     $(".logged-out").hide();
     $(".authorizing").hide();
     $(".signing-up").hide();
