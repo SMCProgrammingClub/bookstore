@@ -16,7 +16,11 @@ $(document).on('am:enterState', function(event, state) {
   if (state === authManager.states.LOGGED_OUT) {
     $(".logged-out").show();
     $("#username").text('');
-    
+    $("#signup-button").show();
+    $("#signup-button").click (function() {
+        $("#signup-modal").modal('show');
+    });
+      
     $("#contact-block").hide();
     $("#user-contact").hide();
     $(".logged-in").hide();
@@ -32,7 +36,8 @@ $(document).on('am:enterState', function(event, state) {
     $("#user-profile-link").attr('href', siteRoot + 'profile/#/' + escapedUID);
     $("#user-contact").show();
     $("#contact-block").show();
-      
+    
+    $("#signup-button").hide();  
     $(".logged-out").hide();
     $(".authorizing").hide();
     $(".signing-up").hide();
